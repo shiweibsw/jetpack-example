@@ -1,0 +1,5 @@
+rootProject.name='Android-Jetpack-Example'
+include ':app'
+include ':basiclib'
+include ':workmanager'
+include ':viewmodel'
