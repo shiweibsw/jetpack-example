@@ -6,7 +6,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.android.jetpack.basiclib.bean.User
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_second.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -42,6 +44,4 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             startActivity<FragmentTestActivity>()
         }
     }
-
-
 }

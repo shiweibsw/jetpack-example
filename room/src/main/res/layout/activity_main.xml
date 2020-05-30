@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnAddRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24sp"
+        android:text="添加一条记录"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLoadAllRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24sp"
+        android:text="获取所有记录"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddRecord" />
+
+
+    <Button
+        android:id="@+id/btnLoadByName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24sp"
+        android:text="根据名称搜索"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLoadAllRecord" />
+
+    <Button
+        android:id="@+id/btnDeleteRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24sp"
+        android:text="删除一条记录"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLoadByName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

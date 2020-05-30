@@ -1,9 +1,10 @@
 package com.android.jetpack.viewmodel
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import org.jetbrains.anko.AnkoLogger
 
-class FragmentTestActivity : AppCompatActivity() {
+class FragmentTestActivity : AppCompatActivity(),AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

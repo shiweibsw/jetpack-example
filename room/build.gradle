@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.android.jetpack.viewmodel"
+        applicationId "com.android.jetpack.room"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
@@ -24,9 +24,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':basiclib')
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 }
