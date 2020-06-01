@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/basiclib" />
+            <option value="$PROJECT_DIR$/camerax" />
             <option value="$PROJECT_DIR$/room" />
             <option value="$PROJECT_DIR$/viewmodel" />
             <option value="$PROJECT_DIR$/workmanager" />
