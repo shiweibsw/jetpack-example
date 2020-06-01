@@ -16,12 +16,21 @@ abstract class UserDatabase : RoomDatabase() {
 
 /**
  * 表示数据库中的表
- */
+ * 1.每个实体必须将至少 1 个字段定义为主键。即使只有 1 个字段，您仍然需要为该字段添加 @PrimaryKey 注释。
+ * 2.默认情况下，Room 将类名称用作数据库表名称。如果您希望表具有不同的名称，请设置 @Entity 注释的 tableName 属性
+ * @Entity(tableName = "users")
+ * 3.与 tableName 属性类似，Room 将字段名称用作数据库中的列名称。如果您希望列具有不同的名称，请将 @ColumnInfo 注释添加到字段，如以下代码段所示
+ * 4.默认情况下，Room 会为在实体中定义的每个字段创建一个列。如果某个实体中有您不想保留的字段，则可以使用 @Ignore 为这些字段注释，如以下代码段所示
+ * 5. 如果您的应用需要通过全文搜索 (FTS) 快速访问数据库信息，请使用虚拟表（使用 FTS3 或 FTS4 SQLite 扩展模块）为您的实体提供支持。(
+ * 启用 FTS 的表始终使用 INTEGER 类型的主键且列名称为“rowid”。如果是由 FTS 表支持的实体定义主键，则必须使用相应的类型和列名称。)
+*/
+@Fts4
 @Entity
 data class UserEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "username") val username: String,
-    @ColumnInfo(name = "age") val age: Int
+    @ColumnInfo(name = "age") val age: Int,
+    @Ignore val email: String
 )
 
 /**
@@ -29,6 +38,7 @@ data class UserEntity(
  */
 @Dao
 interface UserDao {
+
     @Query("SELECT * from userentity")
     fun getAllUsers(): List<UserEntity>
 

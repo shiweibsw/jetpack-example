@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
              * 注意所有涉及db的操作均需要异步完成
              */
             doAsync {
-                db.userDao().insertUsers(UserEntity(2, "bmob", 25))
+                db.userDao().insertUsers(UserEntity(2, "bmob", 25,"xxx@qq.com"))
             }
         }
 
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
         btnDeleteRecord.setOnClickListener {
             doAsync {
-                var user = db.userDao().deleteUser(UserEntity(1, "jerry", 20))
+                var user = db.userDao().deleteUser(UserEntity(1, "jerry", 20,"xxx@qq.com"))
             }
         }
 
