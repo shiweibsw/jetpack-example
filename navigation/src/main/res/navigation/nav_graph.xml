@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+    <!--
+        Label 字段包含该目的地的 XML 布局文件的名称
+        ID 字段包含该目的地的 ID，它用于在代码中引用该目的地。
+    -->
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.android.jetpack.navigation.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_firstFragment_to_nested1Fragment"
+            app:destination="@id/navigation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.android.jetpack.navigation.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" />
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/nested1Fragment">
+        <fragment
+            android:id="@+id/nested1Fragment"
+            android:name="com.android.jetpack.navigation.Nested1Fragment"
+            android:label="fragment_nested1"
+            tools:layout="@layout/fragment_nested1">
+            <action
+                android:id="@+id/action_nested1Fragment_to_nested2Fragment"
+                app:destination="@id/nested2Fragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nested2Fragment"
+            android:name="com.android.jetpack.navigation.Nested2Fragment"
+            android:label="fragment_nested2"
+            tools:layout="@layout/fragment_nested2" />
+    </navigation>
+    <action
+        android:id="@+id/action_global_secondFragment"
+        app:destination="@id/secondFragment" />
+</navigation>
