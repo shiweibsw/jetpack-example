@@ -45,7 +45,7 @@ interface UserDao {
     @Query("SELECT * From userentity where username like:username limit 1")
     fun loadUserInfo(username: String): UserEntity
 
-    @Insert
+    @Insert()
     fun insertUsers(vararg users: UserEntity)
 
     @Delete

@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.jetpack.basiclib.bean.User
 import com.android.jetpack.viewmodel.adapter.UserAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class FirstFragment : Fragment() {
     private val mAdapter by lazy { UserAdapter() }
@@ -35,8 +37,6 @@ class FirstFragment : Fragment() {
                 mAdapter.setNewData(users)
             })
         }
-        recyclerView.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         mAdapter.bindToRecyclerView(recyclerView)
         mAdapter.setOnItemClickListener { adapter, view, position ->
             model?.let { it.setSelectedPosition(position) }

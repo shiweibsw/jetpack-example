@@ -15,7 +15,7 @@ import org.jetbrains.anko.toast
 /**
  * ViewModel主要用于存储和管理与UI相关的数据，并且和生命周期相结合
  *
- * 这是一个非常强大的组件，当你需要不可变数据或者在fragment之间通信时建议使用这个组件
+ * 一个非常强大的组件，当你需要不可变数据或者在fragment之间通信时使用这个组件
  *
  * 导入方式
  *  api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"

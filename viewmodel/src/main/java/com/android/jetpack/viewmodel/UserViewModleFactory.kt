@@ -5,6 +5,7 @@ import com.android.jetpack.basiclib.bean.User
 import com.android.jetpack.basiclib.http.HttpManager
 import com.android.jetpack.basiclib.http.api.callback.OnResultCallBack
 import com.android.jetpack.basiclib.http.subscriber.HttpSubscriber
+import kotlinx.coroutines.launch
 
 class UserViewModleFactory(val lifecycle: Lifecycle) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

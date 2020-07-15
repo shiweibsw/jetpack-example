@@ -10,5 +10,4 @@ class FragmentTestActivity : AppCompatActivity(),AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_test)
     }
-
 }
