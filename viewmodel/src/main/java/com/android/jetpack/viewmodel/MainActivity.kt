@@ -23,6 +23,7 @@ import org.jetbrains.anko.toast
  */
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,10 +33,10 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
              * ViewModelProviders.of 方法已经过时，请使用如下方法
              */
             val model =
-                ViewModelProvider(
-                    this,
-                    UserViewModleFactory(lifecycle)
-                ).get(UserViewModleFactory.UserModel::class.java)
+            ViewModelProvider(
+                this,
+                UserViewModleFactory(lifecycle)
+            ).get(UserViewModleFactory.UserModel::class.java)
             model.getUsers().observe(this, Observer<List<User>> { users ->
                 toast(users.toString())
             })
@@ -43,5 +44,6 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         btnFragment.setOnClickListener {
             startActivity<FragmentTestActivity>()
         }
+
     }
 }

@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.info
+import org.jetbrains.anko.startActivity
 
 /**
  * Room 是在Sqlite基础上的一个抽象层
@@ -26,20 +27,21 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnAddRecord.setOnClickListener {
+            btnAddRecord.setOnClickListener {
             /**
              * 注意所有涉及db的操作均需要异步完成
              */
             doAsync {
-                db.userDao().insertUsers(UserEntity(2, "bmob", 25,"xxx@qq.com"))
+                db.userDao().insertUsers(UserEntity("bmob", 25))
             }
         }
 
         btnLoadAllRecord.setOnClickListener {
+            startActivity<WithRoomActivity>()
             doAsync {
-                db.userDao().getAllUsers().forEach {
-                    info { "==========${it.toString()}" }
-                }
+                //                db.userDao().getAllUsers().forEach {
+//                    info { "==========${it.toString()}" }
+//                }
             }
         }
 
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
         btnDeleteRecord.setOnClickListener {
             doAsync {
-                var user = db.userDao().deleteUser(UserEntity(1, "jerry", 20,"xxx@qq.com"))
+                var user = db.userDao().deleteUser(UserEntity("jerry", 20))
             }
         }
 

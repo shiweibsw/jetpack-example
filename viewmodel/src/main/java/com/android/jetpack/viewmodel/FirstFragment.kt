@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 class FirstFragment : Fragment() {
     private val mAdapter by lazy { UserAdapter() }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,11 +33,11 @@ class FirstFragment : Fragment() {
                 this, UserViewModleFactory(lifecycle)
             ).get(UserViewModleFactory.UserModel::class.java)
         }
-        model?.let {
-            it.getUsers().observe(requireActivity(), Observer<List<User>> { users ->
-                mAdapter.setNewData(users)
-            })
-        }
+    model?.let {
+        it.getUsers().observe(requireActivity(), Observer<List<User>> { users ->
+            mAdapter.setNewData(users)
+        })
+    }
         mAdapter.bindToRecyclerView(recyclerView)
         mAdapter.setOnItemClickListener { adapter, view, position ->
             model?.let { it.setSelectedPosition(position) }

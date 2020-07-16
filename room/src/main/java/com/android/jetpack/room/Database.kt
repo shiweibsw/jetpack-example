@@ -1,7 +1,8 @@
 package com.android.jetpack.room
 
+import android.drm.DrmStore.DrmObjectType.UNKNOWN
 import androidx.room.*
-import com.android.jetpack.basiclib.bean.User
+import androidx.lifecycle.LiveData
 
 /**
  * 使用 @Database 注释的类应满足以下条件：
@@ -23,14 +24,12 @@ abstract class UserDatabase : RoomDatabase() {
  * 4.默认情况下，Room 会为在实体中定义的每个字段创建一个列。如果某个实体中有您不想保留的字段，则可以使用 @Ignore 为这些字段注释，如以下代码段所示
  * 5. 如果您的应用需要通过全文搜索 (FTS) 快速访问数据库信息，请使用虚拟表（使用 FTS3 或 FTS4 SQLite 扩展模块）为您的实体提供支持。(
  * 启用 FTS 的表始终使用 INTEGER 类型的主键且列名称为“rowid”。如果是由 FTS 表支持的实体定义主键，则必须使用相应的类型和列名称。)
-*/
-@Fts4
+ */
 @Entity
 data class UserEntity(
-    @PrimaryKey val id: Int,
     @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "age") val age: Int,
-    @Ignore val email: String
+    @PrimaryKey(autoGenerate = true) val id: Int = 0
 )
 
 /**
@@ -40,12 +39,12 @@ data class UserEntity(
 interface UserDao {
 
     @Query("SELECT * from userentity")
-    fun getAllUsers(): List<UserEntity>
+    fun getAllUsers(): LiveData<MutableList<UserEntity>>
 
-    @Query("SELECT * From userentity where username like:username limit 1")
+    @Query("SELECT * From Userentity where username like:username limit 1")
     fun loadUserInfo(username: String): UserEntity
 
-    @Insert()
+    @Insert
     fun insertUsers(vararg users: UserEntity)
 
     @Delete
